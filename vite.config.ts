@@ -1,6 +1,5 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-// import glsl from 'vite-plugin-glsl';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import glsl from 'vite-plugin-glslify-inject'
 
 export default defineConfig({
@@ -15,6 +14,7 @@ export default defineConfig({
     resolve: {
         alias: {
           '@shaders': "/src/shaders/",
+          '@components': "/src/components/",
         }
     }
 });

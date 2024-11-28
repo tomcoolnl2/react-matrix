@@ -1,13 +1,5 @@
 .canvas {
-    background-color: black;
+    background-color: transparent;
     height: 100vh !important;
     width: 100vw !important;
-}
-.btn {
-    width: 100%;
-    cursor: pointer;
-    height: 5rem;
-    font-size: 2rem;
-    color: #29b79f;
-    background-color: #282c35 ;
 }

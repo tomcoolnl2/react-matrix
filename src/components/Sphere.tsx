@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusic, pauseMusic }, soundRef) => {
+    
     const [sound, setSound] = React.useState<THREE.PositionalAudio | null>(null);
     const mesh = React.useRef<THREE.Mesh>(null);
     const analyzer = React.useRef<THREE.AudioAnalyser | null>(null);
@@ -48,8 +49,11 @@ export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusi
     }), []);
 
     Fiber.useFrame((state) => {
+        
         const { clock } = state;
-        if (!mesh.current) return;
+        if (!mesh.current) {
+            return;
+        }
 
         const meshMaterial = mesh.current.material as THREE.ShaderMaterial;
         const elapsedTime = clock.getElapsedTime();

@@ -1,13 +1,12 @@
-import { Matrix } from "./components/Matrix";
+import { Matrix } from "./components/matrix/Matrix";
 import { Scene } from "./components/Scene";
 
-function App() {
+export function App() {
     return (
         <div className="min-h-screen">
-            {/* <Matrix /> */}
+            <Matrix />
             <Scene />
         </div>
     );
 }
 
-export default App;

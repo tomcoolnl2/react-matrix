@@ -10,7 +10,9 @@
         "clean:install": "npm run clean && npm install",
         "lint": "eslint .",
         "preview": "vite preview",
-        "prettier": "npx prettier . --write"
+        "prettier": "npx prettier . --write",
+        "test": "vitest",
+        "test:watch": "vitest --watch"
     },
     "dependencies": {
         "@react-three/drei": "9.117.3",
@@ -43,6 +45,7 @@
         "prettier": "3.4.1",
         "typescript": "5.7.2",
         "vite": "5.4.11",
-        "vite-plugin-glslify-inject": "1.1.2"
+        "vite-plugin-glslify-inject": "1.1.2",
+        "vitest": "^2.1.6"
     }
 }
