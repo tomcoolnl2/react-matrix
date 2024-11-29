@@ -12,19 +12,23 @@
 }
 
 .stripe-xs {
-    @apply h-2 w-1 rounded-none;
+    @apply h-2 min-w-1 rounded-none;
 }
 
 .stripe-s {
-    @apply h-4 w-2 rounded-[1px];
+    @apply h-4 min-w-2 rounded-[1px];
 }
 
 .stripe-m {
-    @apply h-6 w-3 rounded-sm;
+    @apply h-6 min-w-3 rounded-sm;
 }
 
 .stripe-skewed {
-    @apply transform -skew-x-12;
+    @apply transform -skew-x-45;
+}
+
+.stripe-skew-direction-left.stripe-skewed {
+    @apply skew-x-45;
 }
 
 .stripe-variant-primary {

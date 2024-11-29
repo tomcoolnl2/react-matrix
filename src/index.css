@@ -1,13 +1,13 @@
+@import url('./components/typography/typography.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
-    .text-primary {
-        @apply text-zinc-300;
-    }
     body {
-        @apply bg-dark-gradient text-primary h-screen grid place-items-center !important;
+        @apply bg-dark-gradient h-screen grid place-items-center !important;
     }
 }
 

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    .orbitron-regular {
+        @apply font-orbitron font-normal not-italic;
+    }
+
+    .orbitron-bold {
+        @apply font-orbitron font-bold not-italic;
+    }
+
+    .ubuntu-light {
+        @apply font-ubuntu font-light not-italic;
+    }
+      
+    .ubuntu-regular {
+        @apply font-ubuntu font-normal not-italic;
+    }
+      
+    .ubuntu-medium {
+        @apply font-ubuntu font-medium not-italic;
+    }
+      
+    .ubuntu-bold {
+        @apply font-ubuntu font-bold not-italic;
+    }
+      
+    .ubuntu-light-italic {
+        @apply font-ubuntu font-light italic;
+    }
+      
+    .ubuntu-regular-italic {
+        @apply font-ubuntu font-normal italic;
+    }
+      
+    .ubuntu-medium-italic {
+        @apply font-ubuntu font-medium italic;
+    }
+      
+    .ubuntu-bold-italic {
+        @apply font-ubuntu font-bold italic;
+    }
+
+    .text-primary {
+        @apply text-zinc-200;
+    }
+
+    .text-secundary {
+        @apply text-emerald-200;
+    }
+
+    body {
+        @apply  text-secundary ubuntu-regular;
+    }
+
+    .h {
+        @apply m-0 p-0 orbitron-bold normal-case not-italic tracking-wider;
+    }
+    
+    h1, .h1 {
+        @apply text-[36px] leading-[24px] !important;
+    }
+    
+    h2, .h2 {
+        @apply text-[18px] leading-[22px] !important;
+    }
+    
+    h3, .h3 {
+        @apply text-[16px] leading-[20px] !important;
+    }
+    
+    h4, .h4 {
+        @apply text-[14px] leading-[18px] !important;
+    }
+    
+    h5, .h5 {
+        @apply text-[14px] leading-[18px] !important;
+    }
+    
+    h6, .h6 {
+        @apply text-[12px] leading-[16px] !important;
+    }
+    
+    p {
+        @apply text-zinc-300 font-normal normal-case not-italic tracking-normal;
+    }
+
+    a {
+        @apply text-lime-500 underline;
+    }
+}
+
+@layer utilities {
+    .font-ubuntu {
+        font-family: "Ubuntu", sans-serif;
+    }
+    .font-orbitron {
+        font-family: "Orbitron", sans-serif;
+    }
+}

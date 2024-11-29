@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stripes, StripesVariant, ColorVariant } from './stripes';
+import { Stripes, StripesVariant, ColorVariant, Direction } from './stripes';
 
 const meta: Meta<typeof Stripes> = {
   component: Stripes,
@@ -16,6 +16,10 @@ const meta: Meta<typeof Stripes> = {
       options: Object.values(StripesVariant),
       control: { type: 'select' },
     },
+    skewDirection: {
+      options: Object.values(Direction),
+      control: { type: 'select' },
+    },
     color: {
       options: Object.values(ColorVariant),
       control: { type: 'select' },
@@ -23,6 +27,10 @@ const meta: Meta<typeof Stripes> = {
     gradient: {
       control: { type: 'boolean' },
     },
+    gradientDirection: {
+      options: Object.values(Direction),
+      control: { type: 'select' },
+    }
   },
 };
 
@@ -34,7 +42,9 @@ export const Default: Story = {
     amount: 15,
     size: 'm',
     variant: StripesVariant.STRAIGHT,
+    skewDirection: Direction.RIGHT,
     color: ColorVariant.PRIMARY,
     gradient: false,
+    gradientDirection: Direction.RIGHT,
   },
 };

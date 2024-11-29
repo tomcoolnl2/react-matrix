@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    --lime-500-alpha-05: rgba(132, 204, 22, 0.05);
+    --lime-500-alpha-10: rgba(132, 204, 22, 0.1);
+    --lime-500-alpha-20: rgba(132, 204, 22, 0.2);
+
+    --mask-color: #fff;
+    --gradient-stop: 2%;
+    --border-color-1: theme('colors.emerald.300');
+    --border-color-2: theme('colors.emerald.500');
+    --border-width-1: 2px;
+    --border-width-2: 6px;  
+}
+
+.frame {
+    @apply w-[500px] aspect-video relative py-[3%];
+}
+
+.frame::before {
+    @apply absolute bottom-[3%] -left-[1.5%] w-0 h-0 border-8 border-[--border-color-2] transform rotate-45 border-x-transparent border-b-transparent opacity-90;
+    zoom: 80%;
+    content: '';
+}
+
+.frame-body {
+
+    @apply w-full h-full grid place-items-center;
+
+    border: 2px solid var(--border-color-1);
+    /* filter: drop-shadow(0 0 0.75rem crimson); */
+
+    background:
+        linear-gradient(  45deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-2)), transparent 0) bottom left /50% 50%,
+        linear-gradient( -45deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-2)), transparent 0) bottom right/50% 50%,
+        linear-gradient( 135deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-1)), transparent 0) top left    /50% 50%,
+        linear-gradient(-135deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-1)), transparent 0) top right   /50% 50%,
+        var(--lime-500-alpha-05);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+
+    mask:
+        linear-gradient(  45deg, transparent 0 calc(var(--gradient-stop) * 1.5), var(--mask-color) 0) bottom left,
+        linear-gradient( -45deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) bottom right,
+        linear-gradient( 135deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) top left,
+        linear-gradient(-135deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) top right;
+    mask-size: 50.5% 50.5%;
+    mask-repeat: no-repeat;
+}
+
+.frame-top {
+    @apply absolute w-[95%] top-[3%] left-1/2 transform -translate-x-1/2 h-[6%];
+}
+
+.frame-top-left {
+    @apply w-1/2 pl-[1%] pt-[2%];
+}
+
+.frame-top-right {
+    @apply pr-[5.5%];
+}
+
+.frame-bottom {
+    @apply absolute bottom-0 h-[3%] w-full;
+}

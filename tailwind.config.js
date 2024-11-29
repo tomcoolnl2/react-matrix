@@ -9,8 +9,15 @@ export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./.storybook/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            fontFamily: {
+                poppins: ["Ubuntu", "sans-serif"],
+                oswald: ["Orbitron", "sans-serif"],
+            },
+            skew: {
+                '45': '45deg',
+            },
             backgroundImage: {
-                'dark-gradient': `url('./bg.png'), linear-gradient(to bottom, ${gray[800]}, ${gray[950]})`,
+                'dark-gradient': `url('./bg.png'), linear-gradient(to bottom, ${gray[700]}, ${gray[950]})`,
                 'primary-gradient': `linear-gradient(to bottom, ${primary[500]}, ${primary[400]})`,
                 'secundary-gradient': `linear-gradient(to bottom, ${secundary[500]}, ${secundary[400]})`,
             },
