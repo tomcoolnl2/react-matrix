@@ -37,11 +37,15 @@ export const Matrix: React.FC = () => {
             return;
         }
         animate();
-    }, [state.type])
+    }, [state.type]);
+
+    React.useEffect(() => {
+        console.log('state.drops[0]', state.drops[0])
+    }, [state.drops?.[0]]);
 
     const initialise = React.useCallback(() => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+        const width = window.innerWidth / 2;
+        const height = window.innerHeight / 2;
         const columns = (width / settings.charFontSize) << 0;
         const drops = Array(columns).fill(1);
         dispatch({ 
@@ -56,6 +60,7 @@ export const Matrix: React.FC = () => {
         }
 
         const { characters, bgColor, charFontSize, charColor, charFontStyle } = settings;
+
         context.fillStyle = bgColor;
         context.fillRect(0, 0, state.width, state.height);
         context.fillStyle = charColor;
@@ -63,7 +68,7 @@ export const Matrix: React.FC = () => {
 
         for (let i = 0, n = state.drops.length; i < n; i += 1) {
             const text = characters[(Math.random() * characters.length) << 0];
-            context.fillText(text, i * 20, state.drops[i] * 20);
+            context.fillText(text, i * charFontSize, state.drops[i] * charFontSize);
             // Reset drops when it reaches the bottom of the canvas
             if (state.drops[i] * charFontSize > state.height && Math.random() > 0.975) {
                 state.drops[i] = 0;

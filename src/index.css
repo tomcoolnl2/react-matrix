@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .text-primary {
+        @apply text-zinc-300;
+    }
+    body {
+        @apply bg-dark-gradient text-primary h-screen grid place-items-center !important;
+    }
+}
+
+@layer components {
+    .matrix-canvas {
+        @apply w-full h-full;
+        image-rendering: pixelated;
+    }
+}

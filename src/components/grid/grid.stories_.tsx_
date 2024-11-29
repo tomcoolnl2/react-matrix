@@ -1,0 +1,67 @@
+import React from 'react';
+import { Meta } from '@storybook/react';
+import { Grid } from './grid';
+import { Typography } from '..';
+
+export default {
+    title: "Components/Grid",
+    component: Grid,
+} as Meta;
+
+export const GridCols = () => {
+    const items = new Array(24).fill(null);
+
+    return (
+        <div>
+            <Typography.H5 margin='bottom'>
+                Grid with 5 columns and column gap "xs" (5px) and row gap "s" (10px)
+            </Typography.H5>
+            <Grid
+                cols={5}
+                colGap='xs'
+                rowGap='s'
+                style={{ border: '1px solid black', padding: '10px' }}
+            >
+                {items.map((item, i) => (
+                    <div
+                        key={i}
+                        style={{ border: '1px solid var(--color-brand-red)', display: 'inline-block', padding: '5px' }}
+                    >
+                        <Typography.Text>
+                            Item {i + 1}
+                        </Typography.Text>
+                    </div>
+                ))}
+            </Grid>
+        </div>
+    );
+};
+
+export const GridRows = () => {
+    const items = new Array(24).fill(null);
+
+    return (
+        <div>
+            <Typography.H5 margin='bottom'>
+                Grid with 2 rows, column gap "s" (10px) and row gap "m" (20px)
+            </Typography.H5>
+            <Grid
+                rows={2}
+                colGap='s'
+                rowGap='m'
+                style={{ border: '1px solid black', padding: '10px' }}
+            >
+                {items.map((item, i) => (
+                    <div
+                        key={i}
+                        style={{ border: '1px solid var(--color-brand-red)', display: 'inline-block', padding: '5px' }}
+                    >
+                        <Typography.Text>
+                            Item {i + 1}
+                        </Typography.Text>
+                    </div>
+                ))}
+            </Grid>
+        </div>
+    );
+};

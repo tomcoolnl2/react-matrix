@@ -12,15 +12,14 @@ interface Props {
     playMusic: () => void;
 }
 
-export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusic, pauseMusic }, soundRef) => {
+export const Sphere = React.forwardRef<THREE.PositionalAudio | null, Props>(({ playMusic, pauseMusic }, soundRef) => {
     
     const [sound, setSound] = React.useState<THREE.PositionalAudio | null>(null);
     const mesh = React.useRef<THREE.Mesh>(null);
     const analyzer = React.useRef<THREE.AudioAnalyser | null>(null);
 
     React.useEffect(() => {
-        const sound = soundRef as React.MutableRefObject<THREE.PositionalAudio | null>;
-        setSound(sound.current);
+        setSound((soundRef as React.MutableRefObject<typeof sound>).current);
     }, [soundRef]);
 
     React.useEffect(() => {
@@ -45,18 +44,21 @@ export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusi
         u_intensity: {
             type: 'f',
             value: 0.0
+        },
+        u_color: {
+            type: 'v3',
+            value: new THREE.Color(0x008000)
         }
     }), []);
 
     Fiber.useFrame((state) => {
         
-        const { clock } = state;
-        if (!mesh.current) {
+        if (!mesh.current) { 
             return;
         }
 
         const meshMaterial = mesh.current.material as THREE.ShaderMaterial;
-        const elapsedTime = clock.getElapsedTime();
+        const elapsedTime = state.clock.getElapsedTime();
 
         // Time-based animation
         meshMaterial.uniforms.u_time.value = elapsedTime;
@@ -68,16 +70,17 @@ export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusi
         // Audio-driven frequency
         if (analyzer.current?.data) {
             const rawFrequency = analyzer.current.getAverageFrequency();
-            const smoothedFrequency = (meshMaterial.uniforms.u_frequency.value +=
-                (rawFrequency - meshMaterial.uniforms.u_frequency.value) * .6);
+            const uniformFrequency = meshMaterial.uniforms.u_frequency;
+            const smoothedFrequency = (uniformFrequency.value += (rawFrequency - uniformFrequency.value) * .6);
 
             // Update shader frequency and scale
-            meshMaterial.uniforms.u_frequency.value = smoothedFrequency;
-            const scaleFactor = 0.75 + smoothedFrequency / 1000;
+            uniformFrequency.value = smoothedFrequency * 2;
+            uniformFrequency.value = smoothedFrequency;
+            const scaleFactor = 0.75 + smoothedFrequency / 500;
             mesh.current.scale.set(scaleFactor, scaleFactor, scaleFactor);
 
             // Adjust intensity based on audio
-            meshMaterial.uniforms.u_intensity.value = smoothedFrequency / 250;
+            meshMaterial.uniforms.u_intensity.value = smoothedFrequency / 125;
         }
     });
 
@@ -87,7 +90,7 @@ export const Sphere = React.forwardRef<THREE.PositionalAudio, Props>(({ playMusi
 
     return (
         <>
-            <mesh ref={mesh} onClick={handleSphereClick} position={[0, 0, 0]} scale={[0.5, 0.5, 0.5]}>
+            <mesh ref={mesh} onClick={handleSphereClick} position={[0, 0, -1]} scale={[0.5, 0.5, 0.5]}>
                 <icosahedronGeometry args={[4, 30]} />
                 <shaderMaterial 
                     fragmentShader={fragmentShader} 

@@ -2,11 +2,9 @@
 #pragma glslify: cnoise3 = require(glsl-noise/classic/3d)
 #pragma glslify: pnoise3 = require(glsl-noise/periodic/3d)
 
-uniform float u_intensity;
 uniform float u_time;
 
 varying vec2 vUv;
-varying float vDisplacement;
 varying float noise;
 varying float displacement;
 
