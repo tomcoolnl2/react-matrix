@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .stripes-border {
     @apply border border-lime-200 rounded;
 }

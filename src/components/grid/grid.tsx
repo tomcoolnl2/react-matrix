@@ -4,7 +4,25 @@ import React from 'react';
 import classNames from 'classnames';
 import './grid.css';
 
-export type GridItemInt = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18;
+export type GridItemInt =
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15
+    | 16
+    | 17
+    | 18;
 
 export interface GridProps {
     cols?: GridItemInt | string;
@@ -30,7 +48,7 @@ export const Grid: React.FC<GridProps> = (props) => {
 
     const style: React.CSSProperties = {
         '--row-height': rowHeight,
-        '--col-width': colWidth
+        '--col-width': colWidth,
     } as unknown as React.CSSProperties;
 
     if (props.autoFlow) {
@@ -40,7 +58,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     if (typeof props.cols === 'string') {
         style.gridTemplateColumns = props.cols;
     }
-    
+
     if (typeof props.rows === 'string') {
         style.gridTemplateRows = props.rows;
     }
@@ -62,7 +80,7 @@ export const Grid: React.FC<GridProps> = (props) => {
                     [`rows-${props.rows}`]: typeof props.rows === 'number',
                     [`col-gap-${props.colGap}`]: props.colGap,
                     [`row-gap-${props.rowGap}`]: props.rowGap,
-                    [`padding-${props.padding}`]: props.padding
+                    [`padding-${props.padding}`]: props.padding,
                 },
                 props.className
             )}

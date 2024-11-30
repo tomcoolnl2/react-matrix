@@ -6,15 +6,19 @@ export const secundary = colors.lime;
 
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./.storybook/**/*.{js,ts,jsx,tsx}"],
+    content: [
+        './index.html',
+        './src/**/*.{js,ts,jsx,tsx}',
+        './.storybook/**/*.{js,ts,jsx,tsx}',
+    ],
     theme: {
         extend: {
             fontFamily: {
-                poppins: ["Ubuntu", "sans-serif"],
-                oswald: ["Orbitron", "sans-serif"],
+                poppins: ['Ubuntu', 'sans-serif'],
+                oswald: ['Orbitron', 'sans-serif'],
             },
             skew: {
-                '45': '45deg',
+                45: '45deg',
             },
             backgroundImage: {
                 'dark-gradient': `url('./bg.png'), linear-gradient(to bottom, ${gray[700]}, ${gray[950]})`,

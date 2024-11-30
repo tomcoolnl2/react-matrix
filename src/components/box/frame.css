@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
     --lime-500-alpha-05: rgba(132, 204, 22, 0.05);
     --lime-500-alpha-10: rgba(132, 204, 22, 0.1);
@@ -13,7 +12,7 @@
     --border-color-1: theme('colors.emerald.300');
     --border-color-2: theme('colors.emerald.500');
     --border-width-1: 2px;
-    --border-width-2: 6px;  
+    --border-width-2: 6px;
 }
 
 .frame {
@@ -27,26 +26,69 @@
 }
 
 .frame-body {
-
     @apply w-full h-full grid place-items-center;
 
     border: 2px solid var(--border-color-1);
     /* filter: drop-shadow(0 0 0.75rem crimson); */
 
     background:
-        linear-gradient(  45deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-2)), transparent 0) bottom left /50% 50%,
-        linear-gradient( -45deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-2)), transparent 0) bottom right/50% 50%,
-        linear-gradient( 135deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-1)), transparent 0) top left    /50% 50%,
-        linear-gradient(-135deg, var(--border-color-1) 0 calc(var(--gradient-stop) + var(--border-width-1)), transparent 0) top right   /50% 50%,
+        linear-gradient(
+                45deg,
+                var(--border-color-1) 0
+                    calc(var(--gradient-stop) + var(--border-width-2)),
+                transparent 0
+            )
+            bottom left / 50% 50%,
+        linear-gradient(
+                -45deg,
+                var(--border-color-1) 0
+                    calc(var(--gradient-stop) + var(--border-width-2)),
+                transparent 0
+            )
+            bottom right/50% 50%,
+        linear-gradient(
+                135deg,
+                var(--border-color-1) 0
+                    calc(var(--gradient-stop) + var(--border-width-1)),
+                transparent 0
+            )
+            top left / 50% 50%,
+        linear-gradient(
+                -135deg,
+                var(--border-color-1) 0
+                    calc(var(--gradient-stop) + var(--border-width-1)),
+                transparent 0
+            )
+            top right / 50% 50%,
         var(--lime-500-alpha-05);
     background-origin: border-box;
     background-repeat: no-repeat;
 
     mask:
-        linear-gradient(  45deg, transparent 0 calc(var(--gradient-stop) * 1.5), var(--mask-color) 0) bottom left,
-        linear-gradient( -45deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) bottom right,
-        linear-gradient( 135deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) top left,
-        linear-gradient(-135deg, transparent 0 var(--gradient-stop), var(--mask-color) 0) top right;
+        linear-gradient(
+                45deg,
+                transparent 0 calc(var(--gradient-stop) * 1.5),
+                var(--mask-color) 0
+            )
+            bottom left,
+        linear-gradient(
+                -45deg,
+                transparent 0 var(--gradient-stop),
+                var(--mask-color) 0
+            )
+            bottom right,
+        linear-gradient(
+                135deg,
+                transparent 0 var(--gradient-stop),
+                var(--mask-color) 0
+            )
+            top left,
+        linear-gradient(
+                -135deg,
+                transparent 0 var(--gradient-stop),
+                var(--mask-color) 0
+            )
+            top right;
     mask-size: 50.5% 50.5%;
     mask-repeat: no-repeat;
 }

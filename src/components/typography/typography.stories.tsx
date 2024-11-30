@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { H1, H2, H3, H4, H5, H6, TextVariant } from './Headings';
 
 const meta: Meta<typeof H1> = {
-  component: H1,
-  title: 'Components/Headings',
-  argTypes: {
-    variant: {
-      control: { type: 'select' },
-      options: Object.values(TextVariant),
+    component: H1,
+    title: 'Components/Headings',
+    argTypes: {
+        variant: {
+            control: { type: 'select' },
+            options: Object.values(TextVariant),
+        },
     },
-  },
 };
 
 export default meta;

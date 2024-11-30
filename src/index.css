@@ -4,7 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
     body {
         @apply bg-dark-gradient h-screen grid place-items-center !important;

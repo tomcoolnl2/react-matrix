@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface Props {
     children?: React.ReactNode;
@@ -9,7 +9,14 @@ interface Props {
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const GridItem: React.FC<Props> = ({ children, column, columnStart, columnEnd, placeSelf, onClick }) => {
+export const GridItem: React.FC<Props> = ({
+    children,
+    column,
+    columnStart,
+    columnEnd,
+    placeSelf,
+    onClick,
+}) => {
     const style: React.CSSProperties = {};
 
     if (column) {
@@ -28,4 +35,4 @@ export const GridItem: React.FC<Props> = ({ children, column, columnStart, colum
             {children}
         </div>
     );
-}
+};

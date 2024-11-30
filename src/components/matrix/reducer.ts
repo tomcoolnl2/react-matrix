@@ -5,16 +5,19 @@ export const initialState: MatrixState = {
     width: 0,
     height: 0,
     columns: 0,
-    drops: []
+    drops: [],
 };
 
-export function reducer(state: MatrixState, action: MatrixStateAction): MatrixState {
+export function reducer(
+    state: MatrixState,
+    action: MatrixStateAction
+): MatrixState {
     switch (action.type) {
         case MatrixStateActionType.INITIAL:
             return initialState;
         case MatrixStateActionType.RUNNING:
             return { ...state, ...action.payload, type: action.type };
-      default:
-        return state;
+        default:
+            return state;
     }
-};
+}

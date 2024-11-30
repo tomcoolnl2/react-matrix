@@ -3,12 +3,11 @@ import { MatrixStateActionType } from './model';
 import { reducer, initialState } from './reducer';
 import * as settings from './settings';
 
-
 export const Matrix: React.FC = () => {
-
     const lastFrameTime = React.useRef<number>(Date.now());
     const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
-    const [context, setContext] = React.useState<CanvasRenderingContext2D | null>(null);
+    const [context, setContext] =
+        React.useState<CanvasRenderingContext2D | null>(null);
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
     React.useEffect(() => {
@@ -29,7 +28,7 @@ export const Matrix: React.FC = () => {
 
         return () => {
             window.removeEventListener('resize', initialise);
-        }
+        };
     }, [context]);
 
     React.useEffect(() => {
@@ -40,7 +39,7 @@ export const Matrix: React.FC = () => {
     }, [state.type]);
 
     React.useEffect(() => {
-        console.log('state.drops[0]', state.drops[0])
+        console.log('state.drops[0]', state.drops[0]);
     }, [state.drops?.[0]]);
 
     const initialise = React.useCallback(() => {
@@ -48,9 +47,9 @@ export const Matrix: React.FC = () => {
         const height = window.innerHeight / 2;
         const columns = (width / settings.charFontSize) << 0;
         const drops = Array(columns).fill(1);
-        dispatch({ 
+        dispatch({
             type: MatrixStateActionType.RUNNING,
-            payload: { width, height, columns, drops }
+            payload: { width, height, columns, drops },
         });
     }, []);
 
@@ -59,7 +58,8 @@ export const Matrix: React.FC = () => {
             return;
         }
 
-        const { characters, bgColor, charFontSize, charColor, charFontStyle } = settings;
+        const { characters, bgColor, charFontSize, charColor, charFontStyle } =
+            settings;
 
         context.fillStyle = bgColor;
         context.fillRect(0, 0, state.width, state.height);
@@ -68,9 +68,16 @@ export const Matrix: React.FC = () => {
 
         for (let i = 0, n = state.drops.length; i < n; i += 1) {
             const text = characters[(Math.random() * characters.length) << 0];
-            context.fillText(text, i * charFontSize, state.drops[i] * charFontSize);
+            context.fillText(
+                text,
+                i * charFontSize,
+                state.drops[i] * charFontSize
+            );
             // Reset drops when it reaches the bottom of the canvas
-            if (state.drops[i] * charFontSize > state.height && Math.random() > 0.975) {
+            if (
+                state.drops[i] * charFontSize > state.height &&
+                Math.random() > 0.975
+            ) {
                 state.drops[i] = 0;
             }
             state.drops[i] += 1;
@@ -88,12 +95,11 @@ export const Matrix: React.FC = () => {
     }, [draw]);
 
     return (
-        <canvas 
-            ref={canvasRef} 
+        <canvas
+            ref={canvasRef}
             width={state.width}
             height={state.height}
-            className='matrix-canvas fixed top-0 left-0 z-[-1]'
+            className="matrix-canvas fixed top-0 left-0 z-[-1]"
         />
-    )
+    );
 };
-
